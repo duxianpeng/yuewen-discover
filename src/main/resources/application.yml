@@ -1,0 +1,25 @@
+server:
+  port: ${PORT:1111}
+  context-path: /${spring.application.name}
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+  instance:
+    hostname: ${HOST_NAME:localhost}
+    instanceId: ${spring.application.name}:${server.port}
+    preferIpAddress: false
+    lease-expiration-duration-in-seconds: 5 
+    lease-renewal-interval-in-seconds: 5
+management:  
+  security:  
+    enabled: false
+logging:
+  file: logs/${spring.application.name}.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework.web: DEBUG
+    guru.springframework.controllers: DEBUG
+    org.hibernate: DEBUG

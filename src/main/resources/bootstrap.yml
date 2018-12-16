@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: yuewen-discover
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${HOST_NAME:localhost}:1111/${spring.application.name}/eureka/
